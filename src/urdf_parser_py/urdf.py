@@ -102,6 +102,17 @@ xmlr.reflect(Cylinder, tag='cylinder', params=[
     xmlr.Attribute('length', float)
 ])
 
+class Capsule(xmlr.Object):
+    def __init__(self, radius=0.0, length=0.0):
+        self.radius = radius
+        self.length = length
+
+
+xmlr.reflect(Capsule, tag='capsule', params=[
+    xmlr.Attribute('radius', float),
+    xmlr.Attribute('length', float)
+])
+
 
 class Sphere(xmlr.Object):
     def __init__(self, radius=0.0):
@@ -130,6 +141,7 @@ class GeometricType(xmlr.ValueType):
         self.factory = xmlr.FactoryType('geometric', {
             'box': Box,
             'cylinder': Cylinder,
+            'capsule': Capsule,
             'sphere': Sphere,
             'mesh': Mesh
         })
